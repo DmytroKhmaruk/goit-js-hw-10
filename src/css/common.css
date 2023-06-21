@@ -5,8 +5,9 @@
 
 .breed-select {
     width: 100%;
-    padding: 10px;
+    padding: 20px;
     margin-bottom: 20px;
+    font-size: 2em;
 }
 
 .loader,
@@ -29,4 +30,12 @@
     width: 50%;
     height: auto;
     margin-right: 20px;
+}
+
+.cat-content h2 {
+    font-size: 3em;
+}
+
+.cat-content p {
+    font-size: 1.5em;
 }
