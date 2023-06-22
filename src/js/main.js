@@ -10,43 +10,26 @@ const refs = {
 
 function updateBreedSelect(breeds) {
   refs.breedSelect.innerHTML = '';
-  breeds.forEach(breed => {
+  const breedOptions = breeds.map(breed => {
     const option = document.createElement('option');
     option.value = breed.id;
     option.textContent = breed.name;
-    refs.breedSelect.appendChild(option);
+    return option;
   });
+  refs.breedSelect.append(...breedOptions);
 }
 
 function updateCatInfo(catData) {
-  const catContent = document.createElement('div');
-  catContent.classList.add('cat-content');
-
-  const catImage = document.createElement('img');
-  catImage.classList.add('cat-image');
-  catImage.src = catData.imageUrl;
-  catImage.alt = 'Cat Image';
-  catContent.appendChild(catImage);
-
-  const catDetails = document.createElement('div');
-  catDetails.classList.add('cat-details');
-
-  const breedName = document.createElement('h2');
-  breedName.textContent = catData.breedName;
-  catDetails.appendChild(breedName);
-
-  const description = document.createElement('p');
-  description.innerHTML = `<strong>Description:</strong> ${catData.description}`;
-  catDetails.appendChild(description);
-
-  const temperament = document.createElement('p');
-  temperament.innerHTML = `<strong>Temperament:</strong> ${catData.temperament}`;
-  catDetails.appendChild(temperament);
-
-  catContent.appendChild(catDetails);
-
-  refs.catInfo.innerHTML = '';
-  refs.catInfo.appendChild(catContent);
+  refs.catInfo.innerHTML = `
+    <div class="cat-content">
+      <img class="cat-image" src="${catData.imageUrl}" alt="Cat Image">
+      <div class="cat-details">
+        <h2>${catData.breedName}</h2>
+        <p><strong>Description:</strong> ${catData.description}</p>
+        <p><strong>Temperament:</strong> ${catData.temperament}</p>
+      </div>
+    </div>
+  `;
 }
 
 refs.breedSelect.addEventListener('change', () => {
